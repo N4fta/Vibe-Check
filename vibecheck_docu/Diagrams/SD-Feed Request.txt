@@ -1,0 +1,22 @@
+title Feed Request
+
+Customer->+Website: Clicks on Feed menu item
+Website->+Backend: Feed GET request
+alt Backend reachable
+    alt User Signed-in
+        Backend->+Database: Get User info based on ID
+        Database->-Backend: User Information
+        note over Backend: Analysis of User preferences
+        Backend->+Database: Get Posts based on certain criteria
+        Database->-Backend: List of Posts
+        Backend->-Website: List of Posts
+        Website->Customer: Feed page
+    else User not Signed-in
+        Backend->+Database: Get Popular Posts
+        Database->-Backend: List of Posts
+        Backend->-Website: List of Posts
+        Website->Customer: Feed page
+    end
+else Backend unreachable
+    Website->-Customer: Server unreachable page
+end

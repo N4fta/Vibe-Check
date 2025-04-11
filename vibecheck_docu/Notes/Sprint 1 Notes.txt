@@ -1,0 +1,25 @@
+Tim:
+X Number Research question
+X Sub-questions
+X Methods to answer with different DOT methods
+X Likely hood & Damage for risks (multiplied equals priority); Make risk matrix
+- Packages & API risks
+- Confirmation pop-ups for deletions
+- Choose Architecture (Onion, Domain in center) and reasons why
+	- Have dependencies pointing to Logic (most imp) by moving Interfaces to Logic (or separate package in between)
+	- Same for Front-end DTOs
+- Automatic Mappers exist
+- Long, clear test names
+- Thorough tests
+- Test services and controllers
+X No I
+X Scope explanation
+X Add testing to project plan
+X Explain things that are not clear (feed algorithm)
+
+
+Filipe: 
+X C4 diagram requests (JSON)
+- Better Arguments for Architecture choice
+- Entity Classes for communication to Database
+X Add build docker image to CI/CD pipeline

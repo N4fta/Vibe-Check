@@ -1,0 +1,14 @@
+Regarding the Design Document:
+- In the C2 diagram I should change the name of my Java+Spring component
+- The reasoning for each tech choice should include more specific examples of each SOLID principle
+- Add the MySQL tech choice reasons
+
+Regarding the Front-end:
+- Apply more SOLID principles, for example extracting API calls to their own layer
+
+From the other participants:
+- Add more alternatives to reasoning in SAD choices
+- I should mind Restful API practices and have appropriate endpoints & parameters
+
+Other Notes:
+I should keep implementing features as by sprint 5 we need a fully functional MVP.

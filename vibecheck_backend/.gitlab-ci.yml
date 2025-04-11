@@ -1,0 +1,64 @@
+# Disable the Gradle daemon for Continuous Integration servers as correctness
+# is usually a priority over speed in CI environments. Using a fresh
+# runtime for each build is more reliable since the runtime is completely
+# isolated from any previous builds.
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+default:
+  image: gradle:8.10.1-jdk17
+
+stages:
+  - build
+  - test
+  - sonarqube
+  - docker
+
+build:
+  stage: build
+  script:
+    - chmod +x gradlew
+    - ./gradlew assemble
+  artifacts:
+    paths:
+      - build/libs/
+    expire_in: 1 hour
+
+# Tests are also run as a dependency during the SonarQube stage but this confirms
+# all tests pass even if SonarQube does not
+test:
+  stage: test
+  script:
+    - chmod +x gradlew
+    - ./gradlew test
+  allow_failure: true
+
+sonarqube:
+  stage: sonarqube
+  script:
+    - chmod +x gradlew
+    - ./gradlew sonar
+  allow_failure: true
+
+# Runs docker in docker
+docker-build:
+  stage: docker
+  image: docker:latest
+  dependencies:
+    - build
+  services:
+    - name: docker:dind
+      alias: thedockerhost
+
+  variables:
+    # Tell docker CLI how to talk to Docker daemon; see
+    # https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-executor
+    DOCKER_HOST: tcp://thedockerhost:2375/
+    # Use the overlayfs driver for improved performance:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+
+  script:
+    - echo $DOCKER_PAT | docker login -u n4fta --password-stdin
+    - docker build -t n4fta/vibecheck:backend .
+    - docker push n4fta/vibecheck:backend

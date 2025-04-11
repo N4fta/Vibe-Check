@@ -1,0 +1,31 @@
+name: vibecheck
+
+services:
+  vbc-mysql:
+    image: mysql
+    restart: always
+    volumes:
+      - vibecheck_mysql:/var/lib/mysql-data
+    container_name: vbc-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: O3hlB8hciNHmFiLfgDeK
+      MYSQL_DATABASE: vibecheck
+
+  vbc-backend:
+    image: n4fta/vibecheck:backend
+    container_name: vbc-backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - vbc-mysql
+
+  vbc-frontend:
+    image: n4fta/vibecheck:frontend
+    container_name: vbc-frontend
+    ports:
+      - 3000:3000
+
+volumes:
+  vibecheck_mysql:

@@ -1,0 +1,54 @@
+stages:
+  - build
+  - docker-compose-up
+  - test
+  - docker-compose-down
+  - docker
+
+services:
+  - docker:23.0.5-dind
+
+build:
+  stage: build
+  image: node:20-alpine
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+
+docker-compose-up:
+  stage: docker-compose-up
+  dependencies:
+    - build
+  script:
+    - docker-compose up -d
+
+e2e-test:
+  stage: test
+  image: cypress/browsers:latest
+  dependencies:
+    - docker-compose-up
+  script:
+    - npm ci
+    - npx cypress run --browser chrome --headless
+  allow_failure: true
+
+docker-compose-down:
+  stage: docker-compose-down
+  dependencies:
+    - docker-compose-up
+  script:
+    - docker-compose down
+
+docker-build:
+  stage: docker
+  image: docker:cli
+  dependencies:
+    - build
+  script:
+    - echo $DOCKER_PAT | docker login -u n4fta --password-stdin
+    - docker build -t n4fta/vibecheck:frontend .
+    - docker push n4fta/vibecheck:frontend
