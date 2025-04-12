@@ -40,7 +40,7 @@ CREATE TABLE `account` (
 --
 
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (7,'johnny2@test.tes','notjohn','$2a$10$mTP3UgTwG42pFevPT.9YF.SydRbw2oRaHfg5ZMJyzb9GPmQmqUmRm','1111-11-11 00:00:00',0x00,'user-default-64.png'),(8,'johnny@test.com','johnny','$2a$10$f1kRf2qbWIIodU3FGX0k9ekFa/Z/VmfatDpKIBGzsqh7rrbc8mOuq','2000-11-11 00:00:00',0x00,'user-default-64.png'),(9,'jane@doe.com','janney','$2a$10$XPdfSKR7h1cmu6XU7LoqxuYZjqH6WrH70NlNvuG3Gws0nXUG8eOum','2003-07-13 00:00:00',0x00,NULL),(10,'mariana@gmail.com','mariana','$2a$10$g37caBSeHw1KE9LkpsU2EeE5UQsudkvlojH8OsRqltQk8A93gVGFO','2000-01-11 00:00:00',0x00,NULL),(11,'pedro.dias@ec.europa.eu','diasped','$2a$10$2MAqkqfJiMSZv1wEJhPZI.qLsVRZY2qFnwT58.Ghq1lnkk0X1/X6O','1974-02-03 00:00:00',0x00,NULL),(14,'melisabete.mesquita@gmail.com','Elisabete','$2a$10$cVVtfjSjGRB3cK3MnkgzWuCtHLofk0kfh9B0xY86GwokjcqF1EAi6','1975-06-04 00:00:00',0x00,NULL);
+INSERT INTO `account` VALUES (7,'johnny2@test.tes','notjohn','$2a$10$mTP3UgTwG42pFevPT.9YF.SydRbw2oRaHfg5ZMJyzb9GPmQmqUmRm','1111-11-11 00:00:00',0x00,'user-default-64.png'),(8,'johnny@test.com','johnny','$2a$10$f1kRf2qbWIIodU3FGX0k9ekFa/Z/VmfatDpKIBGzsqh7rrbc8mOuq','2000-11-11 00:00:00',0x00,'user-default-64.png'),(9,'jane@doe.com','janney','$2a$10$XPdfSKR7h1cmu6XU7LoqxuYZjqH6WrH70NlNvuG3Gws0nXUG8eOum','2003-07-13 00:00:00',0x00,NULL),(10,'mariana@gmail.com','mariana','$2a$10$g37caBSeHw1KE9LkpsU2EeE5UQsudkvlojH8OsRqltQk8A93gVGFO','2000-01-11 00:00:00',0x00,NULL);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 --

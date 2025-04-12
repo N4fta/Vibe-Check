@@ -1,7 +1,0 @@
-- Less animations on Welcome Page
-- Explain Left bar icons/menu
-- Review hashtags system
-
-- Editing posts body (Test for injection)
-- Notifications system and icon on FE
-- Apply Color palette to Welcome Page
